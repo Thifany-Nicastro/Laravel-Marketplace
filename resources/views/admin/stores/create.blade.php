@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>Criar Loja</h1>
-<form action="{{route('admin.stores.store')}}" method="POST">
+<form action="{{route('admin.stores.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="">Nome Loja</label>
@@ -45,6 +45,17 @@
             class="form-control @error('mobile_phone') is-invalid @enderror" value="{{old('mobile_phone')}}">
 
         @error('mobile_phone')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <label>Fotos do Produto</label>
+        <input type="file" name="logo" class="form-control  @error('logo') is-invalid @enderror">
+
+        @error('logo')
         <div class="invalid-feedback">
             {{$message}}
         </div>
