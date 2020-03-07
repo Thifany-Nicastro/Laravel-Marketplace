@@ -62,11 +62,6 @@
         @enderror
     </div>
 
-    <div class="form-group">
-        <label for="">Slug</label>
-        <input type="text" name="slug" id="" class="form-control">
-    </div>
-
     <div>
         <button type="submit" class="btn btn-primary btn-lg">Criar Loja</button>
     </div>
