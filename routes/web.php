@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/product/{slug}', 'HomeController@single')->name('product.single');
+Route::get('/category/{slug}', 'CategoryController@index')->name('category.single');
+Route::get('/store/{slug}', 'StoreController@index')->name('store.single');
 
 Route::prefix('cart')->name('cart.')->group(function(){
 	Route::get('/', 'CartController@index')->name('index');
@@ -20,6 +22,14 @@ Route::prefix('cart')->name('cart.')->group(function(){
 
 	Route::get('remove/{slug}', 'CartController@remove')->name('remove');
 	Route::get('cancel', 'CartController@cancel')->name('cancel');
+});
+
+Route::prefix('checkout')->name('checkout.')->group(function(){
+	Route::get('/', 'CheckoutController@index')->name('index');
+	Route::post('/proccess', 'CheckoutController@proccess')->name('proccess');
+	Route::get('/thanks', 'CheckoutController@thanks')->name('thanks');
+
+	Route::post('/notification', 'CheckoutController@notification')->name('notification');
 });
 
 Route::group(['middleware' => ['auth']], function () {
